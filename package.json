@@ -1,0 +1,25 @@
+{
+  "name": "reactdemo",
+  "version": "1.0.0",
+  "description": "react demo",
+  "main": "index.js",
+  "scripts": {
+    "jack": "npm -v" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YiJing233/react-step.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "yiking",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YiJing233/react-step/issues"
+  },
+  "homepage": "https://github.com/YiJing233/react-step#readme",
+  "dependencies": {
+    "react": "^16.13.1"
+  }
+}

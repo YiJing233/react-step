@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js"></script>
+    <script src="../build/babel.min.js"></script>
+    <title>React Hello world</title>
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+        // lesson1 start
+        // let hello = React.createElement(
+        //     'h1', {
+        //     className: 'red',
+        //     name: 'jack'
+        // }, "Hello, world!");
+
+        // //   ReactDOM.render(hello, document.getElementById("example"));
+        // // 一个比较麻烦的写法
+
+        // function tick() {
+        //     var time = new Date().toLocaleTimeString();
+        //     var name = 'jack';
+        //     var ele = <div>
+        //             <h1 clasName="red" name="jack">Hello, {name}</h1>
+        //             <h2>Today is {time}</h2>
+        //             </div>;
+        //     ReactDOM.render(ele, document.getElementById("example"));
+        // }
+        // setInterval(tick, 1000);
+        // lesson1 end
+
+
+
+        // lesson2 start
+        // 无状态的
+        // function Hello(props) {
+
+        //     // var age = 123;
+        //     return <div>
+        //         <h1>Hello, {props.name}!</h1>
+        //         <h2> age: {props.age}</h2>
+        //         <p>擅长： JavaScript</p>
+        //     </div>
+        // }
+
+        // // 有状态的
+        // class HelloJack extends React.Component {
+        //     // render其实是钩子函数
+        //     render() {
+        //         return <div>
+        //             <h1>Hello, {this.props.name}!</h1>
+        //             <h2> age: {this.props.age}</h2>
+        //             <p>擅长： JavaScript</p>
+        //         </div>
+        //     }
+        // }
+
+        // ReactDOM.render(
+        //     <HelloJack name="jack" age="29" />
+        //     , document.getElementById("example")
+        // )
+        // lesson2 end
+
+
+
+
+        // lesson3 start
+        // React生命周期
+        /*
+            初始化阶段、加载阶段
+            数据更新阶段、组件销毁阶段
+
+            Initialization -> Mounting -> updation(props, states) -> unmounting
+        */
+
+
+        // class Hello extends React.Component {
+        //     constructor(props) {
+        //         console.log("初始化阶段");
+        //         // 初始化状态
+        //         super(props);
+        //         this.state = {
+        //             name: 'jack',
+        //             age: 30
+        //         }
+        //     }
+
+        //     updateUser = ()=> {
+        //         // 注意这里使用的是箭头函数，主要和this的绑定有关，
+        //         // 且只有setState方法才能触发render
+        //         console.log(this);
+        //         this.setState ({
+        //             name: 'Tim',
+        //             age: "32"
+        //         })
+        //     }
+
+        //     shouldComponentUpdate() {
+        //         // 用来判断数据是否需要更新，看业务场景决定是否使用
+        //         return true;
+        //     }
+        //     componentWillMount() {
+        //         // 组件加载前阶段，一般是ajax请求
+        //         console.log("组件加载前阶段");
+        //     }
+
+        //     componentDidMount() {
+        //         //组件加载后
+        //         console.log("组件加载后");
+        //     }
+
+        //     componentWillUpdate() {
+        //         console.log("数据将要更新");
+        //     }
+        //     componentDidUpdate() {
+        //         console.log("数据已经更新");
+        //     }
+
+        //     render() {
+        //         // 组件加载或者数据更新
+        //         console.log("组件加载或者数据更新")
+        //         return <div>
+        //             <h1>Hello, {this.state.name}!</h1>
+        //             <h2>age: {this.state.age}</h2>
+        //             <p>擅长: JavaScript</p>
+        //             <button onClick={this.updateUser}></button>
+        //         </div>
+        //     }
+        //     // 或者可以使用<button onClick = {this.updateUser.bind(this)}>
+        // }
+
+        // ReactDOM.render(
+        //     <Hello/>
+        //     , document.getElementById("app")
+        // );
+
+
+        // lesson3 end
+
+
+
+        // lesson4 start
+        //子组件触发父组件方法
+
+        // function Login(props) {
+        //     return <button onClick={props.updateUser}>Login</button>
+        // }
+
+        // function Logout(props) {
+        //     return <button onClick={props.updateUser}>Logout</button>
+        // }
+
+        // class App extends React.Component {
+        //     state = {
+        //         isLogin : false
+        //     }
+
+        //     updateUser = ()=> {
+        //         // 注意这里使用的是箭头函数，主要和this的绑定有关，
+        //         // 且只有setState方法才能触发render
+        //         // console.log(this);
+        //         this.setState ({
+        //             isLogin: !this.state.isLogin
+        //         })
+        //     }
+
+        //     shouldComponentUpdate() {
+        //         // 用来判断数据是否需要更新，看业务场景决定是否使用
+        //         return true;
+        //     }
+        //     componentWillMount() {
+        //         // 组件加载前阶段，一般是ajax请求
+        //         console.log("组件加载前阶段");
+        //     }
+
+        //     componentDidMount() {
+        //         //组件加载后
+        //         console.log("组件加载后");
+        //     }
+
+        //     componentWillUpdate() {
+        //         console.log("数据将要更新");
+        //     }
+        //     componentDidUpdate() {
+        //         console.log("数据已经更新");
+        //     }
+
+        //     render() {
+        //         // 组件加载或者数据更新
+        //         // console.log("组件加载或者数据更新")
+
+        //         const { isLogin } = this.state;
+        //         let button;
+        //         if (isLogin) {
+        //             button = <Login/>
+        //         } else {
+        //             button = <Logout/>
+        //         }
+        //         return <div>
+        //             <h1 className = "red">Hello, {this.state.name}!</h1>
+        //             {isLogin? <Login updateUser={this.updateUser}/> : <Logout updateUser={this.updateUser}/>}
+        //             <button onClick={this.updateUser}>更新数据</button>
+        //         </div>
+        //     }
+        //     // 或者可以使用<button onClick = {this.updateUser.bind(this)}>
+        // }
+
+        // ReactDOM.render(
+        //     <App/>
+        //     , document.getElementById("app")
+        // );
+
+        // lesson4 end
+
+        // lesson5 start
+        //列表渲染
+
+        // class List extends React.Component {
+        //     state = {
+        //         list: [1, 2, 3, 4, 5]
+        //     }
+        //     render() {
+        //         const arr = this.state.list;
+        //         const listItem = [];
+        //         arr.map((item)=>{
+        //             let li = <li>{item}</li>
+        //             listItem.push(li);
+        //         }
+        //         )
+        //         return <div>
+        //             <ul>
+        //                 {listItem}
+        //             </ul>
+        //         </div>
+        //     }
+        // }
+
+        // ReactDOM.render(
+        //     <TodoList/>,
+        //     document.getElementById("app")
+        // );
+        // lesson5 end
+
+        // lesson6 start
+        // 表单
+        class TodoList extends React.Component {
+            state = {
+                val: '',
+                list: []
+            }
+
+            handleAdd = () => {
+                const val = this.state.val;
+                const list = this.state.list;
+                list.push(val);
+                this.setState({
+                    list: list
+                })
+            }
+
+            handleInput = (event) => {
+                this.setState({
+                    val: event.target.value
+                })
+            }
+            render() {
+                const arr = this.state.list;
+                const val = this.state.val;
+                const listItem = [];
+                arr.map((item, index) => {
+                    let li = <li>{item} No.{index}</li>
+                    listItem.push(li);
+                }
+                )
+                return <div> <div>
+                    <input type="text" value={val} onChange={this.handleInput} />
+                    <button onClick={this.handleAdd}>添加</button>
+                </div>
+                    <ul>
+                        {listItem}
+                    </ul>
+                </div>
+            }
+        }
+
+        ReactDOM.render(
+            <TodoList />,
+            document.getElementById("app")
+        );
+
+    // lesson6 end
+    </script>
+</body>
+
+</html>
